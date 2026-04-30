@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CivicAI - Your Smart Indian Election Assistant</title>
+    <meta name="description" content="CivicAI helps Indian citizens understand elections, check voter eligibility, simulate voting on EVM, and prepare for Election Day with personalized guidance.">
+    <meta name="keywords" content="Indian elections, voter registration, EVM, VVPAT, Election Commission of India, voting guide">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">🗳️</span>
+                <span class="logo-text">CivicAI</span>
+            </div>
+            <p class="logo-tagline">Your Election Guide</p>
+        </div>
+        <nav class="sidebar-nav">
+            <button class="nav-item active" data-tab="home" id="nav-home">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Home</span>
+            </button>
+            <button class="nav-item" data-tab="about" id="nav-about">
+                <span class="nav-icon">📚</span>
+                <span class="nav-label">About Elections</span>
+            </button>
+            <button class="nav-item" data-tab="journey" id="nav-journey">
+                <span class="nav-icon">🗺️</span>
+                <span class="nav-label">My Journey</span>
+            </button>
+            <button class="nav-item" data-tab="simulate" id="nav-simulate">
+                <span class="nav-icon">🗳️</span>
+                <span class="nav-label">Vote Simulation</span>
+            </button>
+            <button class="nav-item" data-tab="timeline" id="nav-timeline">
+                <span class="nav-icon">⏰</span>
+                <span class="nav-label">Timeline</span>
+            </button>
+            <button class="nav-item" data-tab="assistant" id="nav-assistant">
+                <span class="nav-icon">🤖</span>
+                <span class="nav-label">AI Assistant</span>
+            </button>
+            <button class="nav-item" data-tab="documents" id="nav-documents">
+                <span class="nav-icon">📋</span>
+                <span class="nav-label">Documents</span>
+            </button>
+            <button class="nav-item" data-tab="profile" id="nav-profile">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Profile</span>
+            </button>
+        </nav>
+        <div class="sidebar-footer" id="auth-container">
+            <button class="btn btn-primary" id="login-btn" onclick="CivicAI.modules.auth.showLoginModal()" style="width:100%;margin-bottom:12px;font-size:13px;padding:8px">Login / Register</button>
+            <button class="theme-toggle-btn" id="theme-toggle" onclick="CivicAI.toggleTheme()" title="Toggle Light/Dark Mode">☀️</button>
+            <p style="margin-top:8px">Made with ❤️ for India</p>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content" id="main-content">
+        <!-- Modules render here -->
+    </main>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <button class="mob-nav-item active" data-tab="home">
+            <span>🏠</span><span>Home</span>
+        </button>
+        <button class="mob-nav-item" data-tab="journey">
+            <span>🗺️</span><span>Journey</span>
+        </button>
+        <button class="mob-nav-item" data-tab="simulate">
+            <span>🗳️</span><span>Vote</span>
+        </button>
+        <button class="mob-nav-item" data-tab="timeline">
+            <span>⏰</span><span>Timeline</span>
+        </button>
+        <button class="mob-nav-item" data-tab="assistant">
+            <span>🤖</span><span>AI Chat</span>
+        </button>
+        <button class="mob-nav-item" data-tab="profile">
+            <span>👤</span><span>Profile</span>
+        </button>
+    </nav>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-storage-compat.js"></script>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script src="modules/auth.js"></script>
+    <script src="modules/home.js"></script>
+    <script src="modules/about.js"></script>
+    <script src="modules/journey.js"></script>
+    <script src="modules/simulate.js"></script>
+    <script src="modules/timeline.js"></script>
+    <script src="modules/assistant.js"></script>
+    <script src="modules/documents.js"></script>
+    <script src="modules/profile.js"></script>
+</body>
+</html>

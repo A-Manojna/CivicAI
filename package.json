@@ -1,0 +1,21 @@
+{
+  "name": "civicai",
+  "version": "1.0.0",
+  "description": "CivicAI - Your Smart Indian Election Assistant",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^4.21.0",
+    "firebase": "^12.12.1",
+    "firebase-admin": "^13.8.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
