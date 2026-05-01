@@ -40,7 +40,7 @@ const CivicAI = {
       <div style="display:flex;align-items:center;gap:12px;">
         <span style="font-size:24px;">🔔</span>
         <div>
-          <h4 style="margin-bottom:4px;font-size:13px;color:var(--text-primary)">Cloud Pub/Sub</h4>
+          <h4 style="margin-bottom:4px;font-size:13px;color:var(--text-primary)">CivicAI Update</h4>
           <p style="font-size:12px;color:var(--text-secondary)">${msg}</p>
         </div>
       </div>

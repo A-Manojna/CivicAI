@@ -91,12 +91,13 @@ CivicAI.register('auth', {
   },
 
   showError(msg) {
+    const cleanMsg = msg.replace('Firebase: ', '');
     const el = document.getElementById('auth-error');
     if (el) {
-      el.textContent = msg;
+      el.textContent = cleanMsg;
       el.style.display = 'block';
     } else {
-      alert(msg);
+      alert(cleanMsg);
     }
   },
 
