@@ -20,6 +20,8 @@ CivicAI.register('auth', {
   user: null,
 
   init() {
+    if (this.initialized) return;
+    this.initialized = true;
     // Listen for auth state changes
     auth.onAuthStateChanged(user => {
       this.user = user;

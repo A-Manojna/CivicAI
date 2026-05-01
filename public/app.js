@@ -8,6 +8,12 @@ const CivicAI = {
     if (this.load('theme', 'dark') === 'light') {
       document.body.classList.add('light-mode');
     }
+
+    // Initialize all modules (important for background modules like 'auth')
+    Object.values(this.modules).forEach(mod => {
+      if (mod.init) mod.init();
+    });
+
     this.loadTab(localStorage.getItem('civicai_tab') || 'home');
     document.querySelectorAll('[data-tab]').forEach(btn => {
       btn.addEventListener('click', () => this.loadTab(btn.dataset.tab));
