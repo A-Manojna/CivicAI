@@ -5,6 +5,25 @@ CivicAI.register('assistant', {
   mode: 'simple', // 'simple' or 'detailed'
   render() {
     let msgs = this.messages.map(m => `<div class="chat-bubble ${m.type}">${m.text.replace(/\n/g,'<br>')}</div>`).join('');
+    const journey = CivicAI.load('journey_progress', [false,false,false,false,false]);
+    const nextStep = journey.indexOf(false);
+    
+    let dynamicPrompts = [
+      { q: "How do I register to vote?", label: "How do I register?" },
+      { q: "What documents do I need for Voter ID?", label: "What ID do I need?" },
+      { q: "How does the EVM work?", label: "How does EVM work?" },
+      { q: "What is NOTA?", label: "What is NOTA?" },
+      { q: "How do I find my polling booth?", label: "Find my booth" }
+    ];
+    
+    if (nextStep === 1) dynamicPrompts[0] = { q: "How do I fill Form 6 on NVSP?", label: "Form 6 Help" };
+    if (nextStep === 2) dynamicPrompts[1] = { q: "How do I check my name in electoral roll?", label: "Check electoral roll" };
+    if (nextStep === 3) dynamicPrompts[4] = { q: "What if I can't find my booth online?", label: "Lost booth?" };
+
+    const promptsHtml = dynamicPrompts.map((p, i) => 
+      `<button class="suggested-prompt" style="animation: slideUp 0.4s ease forwards; opacity: 0; animation-delay: ${i * 0.08}s;" onclick="CivicAI.modules.assistant.askSuggestion('${p.q}')">${p.label}</button>`
+    ).join('');
+
     return `<div class="section-title"><h1>🤖 AI Election Assistant</h1><p>Ask me anything about Indian elections</p></div>
     <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;align-items:center;justify-content:space-between">
       <div style="display:flex;gap:12px;align-items:center">
@@ -24,11 +43,7 @@ CivicAI.register('assistant', {
       <div class="chat-header"><h3>💬 Chat with CivicAI</h3><span class="badge badge-success">Online</span></div>
       <div class="chat-messages" id="chat-msgs">${msgs || '<div class="chat-bubble ai">Namaste! 🙏 I\'m CivicAI, your election assistant. Ask me anything about Indian elections, voter registration, EVM, or your voting rights!</div>'}</div>
       <div class="suggested-prompts" id="suggestions">
-        <button class="suggested-prompt" onclick="CivicAI.modules.assistant.askSuggestion('How do I register to vote?')">How do I register?</button>
-        <button class="suggested-prompt" onclick="CivicAI.modules.assistant.askSuggestion('What documents do I need?')">What ID do I need?</button>
-        <button class="suggested-prompt" onclick="CivicAI.modules.assistant.askSuggestion('How does the EVM work?')">How does EVM work?</button>
-        <button class="suggested-prompt" onclick="CivicAI.modules.assistant.askSuggestion('What is NOTA?')">What is NOTA?</button>
-        <button class="suggested-prompt" onclick="CivicAI.modules.assistant.askSuggestion('Find my polling booth')">Find my booth</button>
+        ${promptsHtml}
       </div>
       <div class="chat-input-wrap">
         <input class="chat-input" id="chat-input" placeholder="Type your question..." onkeydown="if(event.key==='Enter')CivicAI.modules.assistant.send()">

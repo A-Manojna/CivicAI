@@ -12,6 +12,38 @@ const CivicAI = {
     document.querySelectorAll('[data-tab]').forEach(btn => {
       btn.addEventListener('click', () => this.loadTab(btn.dataset.tab));
     });
+    this.initPubSub();
+  },
+  // Pub/Sub Mock
+  initPubSub() {
+    setInterval(() => {
+      const messages = [
+        "Election Commission just released a new update! Check the Timeline.",
+        "Your constituency might have upcoming changes.",
+        "Don't forget to review the Voter ID requirements."
+      ];
+      if (Math.random() > 0.7) {
+        this.showToast(messages[Math.floor(Math.random() * messages.length)]);
+      }
+    }, 20000); // Random mock notification
+  },
+  showToast(msg) {
+    const toast = document.createElement('div');
+    toast.className = 'toast animate-in';
+    toast.innerHTML = `
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span style="font-size:24px;">🔔</span>
+        <div>
+          <h4 style="margin-bottom:4px;font-size:13px;color:var(--text-primary)">Cloud Pub/Sub</h4>
+          <p style="font-size:12px;color:var(--text-secondary)">${msg}</p>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      toast.style.animation = 'slideDown 0.3s ease forwards';
+      setTimeout(() => toast.remove(), 300);
+    }, 4000);
   },
   loadTab(tab) {
     this.currentTab = tab;

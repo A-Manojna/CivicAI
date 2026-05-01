@@ -19,7 +19,36 @@ CivicAI.register('journey', {
         <div class="check-circle">${progress[i]?'✓':''}</div>
         <div class="checklist-info"><h4>${s.icon} ${s.title}</h4><p>${s.desc}</p></div>
       </div>`).join('');
+    let smartSuggestion = '';
+    const firstMissing = progress.indexOf(false);
+    if (firstMissing === 0) {
+      smartSuggestion = '<div style="background: rgba(108,92,231,0.1); border-left: 3px solid var(--primary); padding: 12px; border-radius: 4px; font-size: 14px;"><strong style="color:var(--primary-light)">Smart Suggestion:</strong> Start by checking your eligibility below.</div>';
+    } else if (firstMissing === 1) {
+      smartSuggestion = '<div style="background: rgba(108,92,231,0.1); border-left: 3px solid var(--primary); padding: 12px; border-radius: 4px; font-size: 14px;"><strong style="color:var(--primary-light)">Smart Suggestion:</strong> Head over to the <a href="https://voters.eci.gov.in" target="_blank" style="text-decoration:underline">NVSP Portal</a> to register as a voter.</div>';
+    } else if (firstMissing === 2) {
+      smartSuggestion = '<div style="background: rgba(108,92,231,0.1); border-left: 3px solid var(--primary); padding: 12px; border-radius: 4px; font-size: 14px;"><strong style="color:var(--primary-light)">Smart Suggestion:</strong> Verify your name in the electoral roll to ensure your application was accepted.</div>';
+    } else if (firstMissing === 3) {
+      smartSuggestion = '<div style="background: rgba(108,92,231,0.1); border-left: 3px solid var(--primary); padding: 12px; border-radius: 4px; font-size: 14px;"><strong style="color:var(--primary-light)">Smart Suggestion:</strong> Use the "Find My Booth" tool below to locate where you need to go.</div>';
+    } else if (firstMissing === 4) {
+      smartSuggestion = '<div style="background: rgba(108,92,231,0.1); border-left: 3px solid var(--primary); padding: 12px; border-radius: 4px; font-size: 14px;"><strong style="color:var(--primary-light)">Smart Suggestion:</strong> Everything is set! Get ready to cast your vote on Election Day.</div>';
+    } else {
+      smartSuggestion = '<div style="background: rgba(0,184,148,0.1); border-left: 3px solid var(--success); padding: 12px; border-radius: 4px; font-size: 14px;"><strong style="color:var(--success)">Congratulations!</strong> You are 100% prepared to vote. 🎉</div>';
+    }
+    
     return `<div class="section-title"><h1>🗺️ My Voting Journey</h1><p>Your personalized path to casting your vote</p></div>
+    
+    <div style="display:flex; gap: 24px; align-items: center; margin-bottom: 32px; background: var(--bg-card); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow);">
+      <div style="position: relative; width: 120px; height: 120px; border-radius: 50%; background: conic-gradient(var(--success) ${done/5*100}%, rgba(255,255,255,0.05) 0); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 0 20px rgba(0,184,148,0.2);">
+        <div style="width: 100px; height: 100px; background: var(--bg-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+          <span style="font-size: 26px; font-weight: 800; color: var(--success); text-shadow: 0 0 10px rgba(0,184,148,0.4);">${done/5*100}%</span>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <h3 style="margin-bottom: 12px; font-size: 22px;">You are ${done/5*100}% ready to vote!</h3>
+        ${smartSuggestion}
+      </div>
+    </div>
+    
     <div class="glass-card" style="max-width:560px;margin-bottom:24px">
       <h3>👤 Tell Us About You</h3>
       <div class="form-group" style="margin-top:16px"><label class="form-label">Your Age</label>
@@ -42,9 +71,7 @@ CivicAI.register('journey', {
       <div id="eligibility-result"></div>
     </div>
     <div>
-      <h2 style="margin-bottom:8px">📋 Your Voting Checklist</h2>
-      <div class="progress-bar"><div class="progress-fill" style="width:${done/5*100}%"></div></div>
-      <p class="progress-text" style="margin-bottom:16px">${done} of 5 steps completed</p>
+      <h2 style="margin-bottom:16px">📋 Your Voting Checklist</h2>
       ${stepsHtml}
     </div>
     <div class="glass-card" style="margin-top:32px">

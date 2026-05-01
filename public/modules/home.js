@@ -33,6 +33,35 @@ CivicAI.register('home', {
       <h1>${CivicAI.getGreeting()}, <span class="gradient-text">${name}!</span></h1>
       <p>Your personal guide to understanding and participating in Indian elections. Let's make your vote count! 🇮🇳</p>
     </div>
+    
+    <!-- BigQuery Insights Dashboard -->
+    <div class="glass-card" style="margin-bottom: 24px; border-left: 4px solid var(--accent); position: relative; overflow: hidden;">
+      <div style="position: absolute; top: -10px; right: -10px; opacity: 0.05; font-size: 100px;">📊</div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+        <div>
+          <h3 style="display: flex; align-items: center; gap: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            Community Insights
+          </h3>
+          <p style="font-size: 12px; color: var(--text-secondary);">Powered by Google BigQuery</p>
+        </div>
+        <span class="badge badge-success" style="animation: pulse 2s infinite;">Live</span>
+      </div>
+      <div class="grid grid-3" style="gap: 12px;">
+        <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px;">
+          <div style="font-size: 24px; font-weight: 700; color: var(--primary-light);">85%</div>
+          <div style="font-size: 12px; color: var(--text-secondary);">Users completed 3/5 steps</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px;">
+          <div style="font-size: 18px; font-weight: 700; color: var(--danger); line-height: 32px;">Registration</div>
+          <div style="font-size: 12px; color: var(--text-secondary);">Most common missing step</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px;">
+          <div style="font-size: 24px; font-weight: 700; color: var(--success);">10,492</div>
+          <div style="font-size: 12px; color: var(--text-secondary);">Citizens preparing to vote</div>
+        </div>
+      </div>
+    </div>
     <div class="grid grid-3">
       <div class="glass-card action-card" onclick="CivicAI.navigateTo('journey')">
         <span class="action-icon">🗺️</span><h3>Start My Voting Journey</h3><p>Personalized step-by-step guide</p>
