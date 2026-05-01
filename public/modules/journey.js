@@ -38,7 +38,7 @@ CivicAI.register('journey', {
     return `<div class="section-title"><h1>🗺️ My Voting Journey</h1><p>Your personalized path to casting your vote</p></div>
     
     <div style="display:flex; gap: 24px; align-items: center; margin-bottom: 32px; background: var(--bg-card); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow);">
-      <div style="position: relative; width: 120px; height: 120px; border-radius: 50%; background: conic-gradient(var(--success) ${done/5*100}%, rgba(255,255,255,0.05) 0); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 0 20px rgba(0,184,148,0.2);">
+      <div style="position: relative; width: 120px; height: 120px; border-radius: 50%; background: conic-gradient(var(--success) ${done/5*100}%, var(--bg-track) 0); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 0 20px rgba(0,184,148,0.2);">
         <div style="width: 100px; height: 100px; background: var(--bg-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column;">
           <span style="font-size: 26px; font-weight: 800; color: var(--success); text-shadow: 0 0 10px rgba(0,184,148,0.4);">${done/5*100}%</span>
         </div>

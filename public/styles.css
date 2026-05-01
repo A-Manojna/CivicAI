@@ -18,16 +18,18 @@
   --transition: all 0.3s ease;
   --sidebar-bg: rgba(15,15,30,0.95);
   --border-color: rgba(255,255,255,0.06);
+  --bg-track: rgba(255,255,255,0.08);
 }
 body.light-mode {
   --bg-dark: #F0F2F5;
-  --bg-card: rgba(0,0,0,0.04);
-  --bg-card-hover: rgba(0,0,0,0.07);
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F8F9FA;
   --text-primary: #1A1A2E;
   --text-secondary: #555570;
-  --shadow: 0 8px 32px rgba(0,0,0,0.1);
-  --sidebar-bg: rgba(255,255,255,0.95);
+  --shadow: 0 8px 32px rgba(0,0,0,0.06);
+  --sidebar-bg: #FFFFFF;
   --border-color: rgba(0,0,0,0.08);
+  --bg-track: rgba(0,0,0,0.05);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}

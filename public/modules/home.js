@@ -48,15 +48,15 @@ CivicAI.register('home', {
         <span class="badge badge-success" style="animation: pulse 2s infinite;">Live</span>
       </div>
       <div class="grid grid-3" style="gap: 12px;">
-        <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px;">
+        <div style="background: var(--bg-track); padding: 12px; border-radius: 8px;">
           <div style="font-size: 24px; font-weight: 700; color: var(--primary-light);">85%</div>
           <div style="font-size: 12px; color: var(--text-secondary);">Users completed 3/5 steps</div>
         </div>
-        <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px;">
+        <div style="background: var(--bg-track); padding: 12px; border-radius: 8px;">
           <div style="font-size: 18px; font-weight: 700; color: var(--danger); line-height: 32px;">Registration</div>
           <div style="font-size: 12px; color: var(--text-secondary);">Most common missing step</div>
         </div>
-        <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px;">
+        <div style="background: var(--bg-track); padding: 12px; border-radius: 8px;">
           <div style="font-size: 24px; font-weight: 700; color: var(--success);">10,492</div>
           <div style="font-size: 12px; color: var(--text-secondary);">Citizens preparing to vote</div>
         </div>

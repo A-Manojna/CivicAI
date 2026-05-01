@@ -65,6 +65,13 @@ CivicAI.register('auth', {
           <button class="btn btn-primary" onclick="CivicAI.modules.auth.login()" style="flex:1">Login</button>
           <button class="btn btn-secondary" onclick="CivicAI.modules.auth.register()" style="flex:1">Register</button>
         </div>
+        
+        <div style="margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+          <button class="btn btn-ghost" onclick="CivicAI.modules.auth.googleLogin()" style="width:100%; display:flex; align-items:center; justify-content:center; gap:10px; border-radius: 8px;">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#EA4335" d="M5.2662 9.76453C5.04359 10.4741 4.9209 11.2226 4.9209 12C4.9209 12.7774 5.04359 13.5259 5.2662 14.2355L1.60172 17.078C0.849035 15.5458 0.420898 13.822 0.420898 12C0.420898 10.178 0.849035 8.45421 1.60172 6.92198L5.2662 9.76453Z"/><path fill="#FBBC05" d="M16.0406 18.0131C14.9505 18.7181 13.5654 19.1255 12 19.1255C9.13886 19.1255 6.69218 17.1852 5.92211 14.5714L2.25763 17.4139C4.06281 21.0112 7.74088 23.4144 12 23.4144C15.2255 23.4144 18.1182 22.3168 20.3541 20.4552L16.0406 18.0131Z"/><path fill="#4285F4" d="M19.8519 20.8715C21.758 19.284 23.0791 16.9038 23.0791 14.1818C23.0791 13.4334 22.9564 12.721 22.7338 12.0531H12V16.3989H18.2117C17.9234 17.9157 17.0734 19.1837 16.0406 20.4552L20.3541 20.8715V20.8715Z"/><path fill="#34A853" d="M12 4.8745C13.5654 4.8745 14.9505 5.39403 16.0406 6.30153L19.2312 3.11096C17.2804 1.28896 14.7709 0.174438 12 0.174438C7.74088 0.174438 4.06281 2.57763 2.25763 6.17489L5.92211 9.01744C6.69218 6.40366 9.13886 4.8745 12 4.8745Z"/></svg>
+            Continue with Google
+          </button>
+        </div>
         <div id="auth-error" style="color:var(--danger);font-size:13px;margin-top:12px;display:none"></div>
       </div>
     `, null, true);
@@ -96,6 +103,16 @@ CivicAI.register('auth', {
     const password = document.getElementById('auth-password').value;
     try {
       await auth.signInWithEmailAndPassword(email, password);
+      this.closeModal();
+    } catch (error) {
+      this.showError(error.message);
+    }
+  },
+
+  async googleLogin() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    try {
+      await auth.signInWithPopup(provider);
       this.closeModal();
     } catch (error) {
       this.showError(error.message);
